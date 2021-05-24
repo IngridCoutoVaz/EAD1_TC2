@@ -4,7 +4,7 @@ import { WebService } from '../web.service';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-atualizar',
+  selector: 'app-update',
   templateUrl: './atualizar.component.html',
   styleUrls: ['./atualizar.component.css'],
 })
@@ -12,7 +12,7 @@ export class AtualizarComponent implements OnInit {
   constructor(private api: WebService) {}
 
   @Input() selectedProduct: Produto;
-  @Output() closeModal = new EventEmitter<string>();
+  @Output() close = new EventEmitter<string>();
 
   updateForm = new FormGroup({
     title: new FormControl('', Validators.required),
@@ -23,8 +23,8 @@ export class AtualizarComponent implements OnInit {
   updateFormMessage: string;
   product = { title: '', price: 0.0, description: '', _id: '' };
 
-  closeUpdateConfirmationModal(): void {
-    this.closeModal.emit(null);
+  closeUpdateConfirmation(): void {
+    this.close.emit(null);
   }
 
   onSubmit() {
@@ -40,7 +40,7 @@ export class AtualizarComponent implements OnInit {
           this.updateFormMessage = 'Atualização realizada com sucesso!';
           setTimeout(() => {
             this.updateFormMessage = '';
-            this.closeUpdateConfirmationModal();
+            this.closeUpdateConfirmation();
           }, 1500);
         } else {
           this.updateFormMessage = 'Atualização NÃO realizada.';

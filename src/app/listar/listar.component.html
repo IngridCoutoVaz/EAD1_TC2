@@ -1,18 +1,25 @@
-<div>
-    <table>
-        <thead>
-            <tr>
-                <td>Título</td>
-                <td>Preço</td>
-                <td>Descrição</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let p of listaProdutos">
-                <td>{{p.title}}</td>
-                <td>{{p.price}}</td>
-                <td>{{p.description}}</td>
-            </tr>
-        </tbody>
+<section>
+    <h2>Produtos Cadastrados</h2>
+      <table>
+      <thead>
+        <tr>
+          <td>Título</td>
+          <td>Descrição</td>
+          <td>Preço</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of listaProdutos">
+          <td>{{product.title}}</td>
+          <td>{{product.description}}</td>
+          <td>R$ {{product.price}}</td>
+          <button (click)="openEditConfirmation(product)">Editar</button>
+          <button (click)="openDeleteConfirmation(product)">Excluir</button>
+        </tr>
+      </tbody>
     </table>
-</div>
+  </section>
+  <app-delete *ngIf="deleteConfirmation" [selectedProduct]="selectedProduct" (closeDelete)="closeDeleteConfirmation($event)"></app-delete>
+  <app-update *ngIf="editConfirmation" [selectedProduct]="selectedProduct"(close)="closeEditConfirmation($event)"></app-update>

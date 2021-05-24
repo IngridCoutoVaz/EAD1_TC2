@@ -3,7 +3,7 @@ import { WebService } from '../web.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-deletar',
+  selector: 'app-delete',
   templateUrl: './deletar.component.html',
   styleUrls: ['./deletar.component.css'],
 })
@@ -19,8 +19,8 @@ export class DeleteComponent implements OnInit {
     this.closeDelete.emit(null);
   }
 
-  deletar(produtoId: string) {
-    this.api.deleteProduct(produtoId).subscribe((response) => {
+  deletar(productId: string) {
+    this.api.deleteProduct(productId).subscribe((response) => {
       if (response.ok === true) {
         this.deleteMessage = 'Exclusão concluída com sucesso!';
         setTimeout(() => {
