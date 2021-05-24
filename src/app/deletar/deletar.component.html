@@ -1,0 +1,10 @@
+<app-deletar>
+  <div>
+      <p>Deletar produto {{selectedProduct.title}}?</p>
+      <div>
+        <button (click)="closeDeleteConfirmation()">Não</button>
+        <button (click)="delete(selectedProduct._id)">Sim</button>
+      </div>
+      <p *ngIf="deleteMessage">{{ deleteMessage }}</p>
+    </div>
+</app-deletar>
